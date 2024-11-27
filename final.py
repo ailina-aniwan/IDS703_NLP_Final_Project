@@ -18,7 +18,7 @@ import os
 os.makedirs("data", exist_ok=True)
 
 # Step 1: Load and preprocess the dataset
-file_path = "https://raw.githubusercontent.com/ailina-aniwan/IDS703_NLP_Final_Project/refs/heads/main/data/Womens%20Clothing%20E-Commerce%20Reviews.csv"
+file_path = "https://raw.githubusercontent.com/ailina-aniwan/IDS703_NLP_Final_Project/refs/heads/main/data/womens_clothing_ecommerce_reviews.csv"
 data = pd.read_csv(file_path)
 
 # Remove rows with missing review text

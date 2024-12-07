@@ -30,11 +30,11 @@ Customer satisfaction classification is critical for understanding user feedback
 ### Fine-tuning Process
 We put the model in training mode (model.train()) for the fine-tuning steps, ensuring that dropout and other training-related layers are activated. Each iteration:
 
-	1.  **Forward Pass**: Input token IDs and attention masks are fed into BERT.
-	2.	**Compute Loss**: The model’s final layer outputs logits, and you compute the cross-entropy loss against the true labels.
-	3.	**Backward Pass**: Compute gradients of the loss with respect to all model parameters.
-	4.	**Optimizer Step**: Update the model parameters using AdamW optimizer.
-	5.	**Scheduler Step**: Adjust the learning rate according to a linear decay schedule.
+1.  **Forward Pass**: Input token IDs and attention masks are fed into BERT.
+2.	**Compute Loss**: The model’s final layer outputs logits, and you compute the cross-entropy loss against the true labels.
+3.	**Backward Pass**: Compute gradients of the loss with respect to all model parameters.
+4.	**Optimizer Step**: Update the model parameters using AdamW optimizer.
+5.	**Scheduler Step**: Adjust the learning rate according to a linear decay schedule.
 
 ### Validation Process
 

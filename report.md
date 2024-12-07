@@ -19,6 +19,28 @@ Customer satisfaction classification is critical for understanding user feedback
 - **Real Data:** Sourced from an e-commerce review dataset with customer reviews labeled as "Recommend" or "Not Recommend," reflecting real-world sentiment patterns.
 - **Training Process:** Fine-tuning BERT with separate train-test splits for real and synthetic datasets. Metrics such as accuracy, precision, recall, and F1-score used for evaluation.
 
+## Training and Validation
+
+### Training Setup
+- **Loss Function**: For a binary classification task in this case, we employ cross entropy loss as our loss function. The model outputs logits, and the loss compares these logits with the true label.
+- **Optimizer and Learning Rate**: We used AdamW as the optimizer for fine-tuning BERT, which helps apply proper weight decay and gradient updates suitable for transformers. 
+- **Epochs**: Because BERT is already trained, fewer epochs are needed. Fine-tuning often happens in 2-5 epochs. Training longer can lead to overfitting, as BERT is already highly capable of representing language. In this project, we arbitrarily chose epochs of 3.
+- **Batch Size**: Common batch sizes for fine-tuning range from 8 to 32. Based on our GPU memory, we chose a batch size of 16.
+
+### Fine-tuning Process
+We put the model in training mode (model.train()) for the fine-tuning steps, ensuring that dropout and other training-related layers are activated. Each iteration:
+
+	1.  **Forward Pass**: Input token IDs and attention masks are fed into BERT.
+	2.	**Compute Loss**: The model’s final layer outputs logits, and you compute the cross-entropy loss against the true labels.
+	3.	**Backward Pass**: Compute gradients of the loss with respect to all model parameters.
+	4.	**Optimizer Step**: Update the model parameters using AdamW optimizer.
+	5.	**Scheduler Step**: Adjust the learning rate according to a linear decay schedule.
+
+### Validation Process
+
+After each epoch or at certain intervals, we run the model on a validation set to monitor performance (accuracy, F1-score, etc.). This helps detect overfitting and guides when to stop training or adjust hyperparameters.
+
+
 ## Quantitative Evaluation
 | Metric                      | Synthetic Data | Real Data |
 |-----------------------------|----------------|-----------|

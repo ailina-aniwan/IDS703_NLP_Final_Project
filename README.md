@@ -39,7 +39,7 @@ Ensure that Python 3.7+ is installed.
 ### `final.py`
 The consolidated Python script performs the following steps:
 1. Loads and cleans the real-world dataset (`data/cleaned_reviews.csv`).
-2. Generates synthetic data and saves it as ()`data/synthetic_reviews.csv`).
+2. Generates synthetic data and saves it as (`data/synthetic_reviews.csv`).
 3. Trains a BERT-based sentiment classification model on the synthetic data.
 4. Evaluates the model on both synthetic and real datasets.
 5. Displays examples of good and bad predictions for synthetic data in the console.
